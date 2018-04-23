@@ -5,51 +5,53 @@
 <h2>Eat-Da-Burger!</h2>
 
 <div class="row">
-  <div class="col-lg-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Burgers To Eat</h3>
-      </div>
-      <div class="panel-body">
-        <ol>
-          {{#each burgers}} {{#unless devoured}}
-          <li class="burger-item">
-            {{burger_name}}
-          </li>
-          <button class="btn btn-primary eat-burger" data-id="{{id}}" data-devour="false">Devour Burger!</button>
-          {{/unless}} {{/each}}
-        </ol>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Burger Order</h3>
-      </div>
-      <div class="panel-body">
-        <form class="create-form">
-          <textarea class="form-control" rows="3"></textarea>
-          <button class="btn btn-primary add-burger">Submit</button>
-        </form>
+  <div class="container">
+    <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Burgers To Eat</h3>
+        </div>
+        <div class="panel-body">
+          <ol>
+            {{#each burgers}} {{#unless devoured}}
+            <li class="burger-item">
+              {{burger_name}}
+            </li>
+            <button class="btn btn-primary eat-burger" data-id="{{id}}" data-devour="false">Devour Burger!</button>
+            {{/unless}} {{/each}}
+          </ol>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="col-lg-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Burgers Eaten</h3>
+    <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Burger Order</h3>
+        </div>
+        <div class="panel-body">
+          <form class="create-form">
+            <textarea class="form-control" rows="3"></textarea>
+            <button class="btn btn-primary add-burger">Submit</button>
+          </form>
+        </div>
       </div>
-      <div class="panel-body">
-        <ul>
-          {{#each burgers}} {{#if devoured}}
-          <li class="eaten-burger-item">
-            {{burger_name}}
-          </li>
-          {{/if}} {{/each}}
-        </ul>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Burgers Eaten</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
+            {{#each burgers}} {{#if devoured}}
+            <li class="eaten-burger-item">
+              {{burger_name}}
+            </li>
+            {{/if}} {{/each}}
+          </ul>
+        </div>
       </div>
     </div>
   </div>
