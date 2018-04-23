@@ -4,68 +4,90 @@
 
 <h2>Eat-Da-Burger!</h2>
 
-<div class="uneaten-burgers">
-  <ol>
-    {{#each burgers}} {{#unless devoured}}
-    <li class="burger-item">
-      {{burger_name}}
-    </li>
-    {{/unless}} {{/each}}
-  </ol>
+<div class="row">
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Burgers To Eat</h3>
+      </div>
+      <div class="panel-body">
+        <ol>
+          {{#each burgers}} {{#unless devoured}}
+          <li class="burger-item">
+            {{burger_name}}
+          </li>
+          <button class="btn btn-primary eat-burger" data-id="{{id}}" data-devour="false">Devour Burger!</button>
+          {{/unless}} {{/each}}
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Burger Order</h3>
+      </div>
+      <div class="panel-body">
+        <form class="create-form">
+          <textarea class="form-control" rows="3"></textarea>
+          <button class="btn btn-primary add-burger">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Burgers Eaten</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+          {{#each burgers}} {{#if devoured}}
+          <li class="eaten-burger-item">
+            {{burger_name}}
+          </li>
+          {{/if}} {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
-
-<button class="eat-burger" data-id="{{id}}" data-devour="true">Devour Burger</button>
-
-
-<div class="eaten-burgers">
-  <ol>
-    {{#each burgers}} {{#if devoured}}
-    <li>
-      {{burger_name}}
-    </li>
-    {{/if}} {{/each}}
-  </ol>
-</div>
-
-<textarea class="form-control" rows="3"></textarea>
-
-<button type="submit" class="btn btn-primary add-burger">Submit</button>
 
 <p>Enter a burger that you want to eat.</p>
 
 <script type="text/javascript">
   $(".eat-burger").on("click", function (event) {
     var id = $(this).data("id");
-    var eatenBurger = $(this).data('devour');
 
-    var newBurgerStatus = {
-      devoured: eatenBurger
-    }
+    var burgerDevour = {
+      devoured: 'true'
+    };
 
+    // Send the PUT request.
     $.ajax("/api/burgers/" + id, {
       type: "PUT",
-      devoured: newBurgerStatus
+      devour: burgerDevour
     }).then(
       function () {
-        console.log("changed devoured to ", eatenBurger);
+        console.log("changed devour to", burgerDevour);
+        // Reload the page to get the updated list
         location.reload();
       }
     );
   });
 
-  $('.add-burger').on('click' function () {
-    $('.uneaten-burgers').css('visibility', 'visible');
+  $('.create-form').on('submit', function (event) {
+    event.preventDefault();
 
-    var newBurger = {
-      burger_name: $('.form-control').val().trim(),
-      devoured: false
-    }
+    var burgerData = $('.form-control').val().trim();
 
-    $.ajax('/api/burgers', {
-      type: "POST",
-      data: newBurger
+    $.post('/api/burgers', {
+      data: burgerData
     }).then(function () {
       console.log('Created new burger');
-    })
+      location.reload();
+    });
   });
 </script>

@@ -1,15 +1,5 @@
 var connection = require('./connection.js');
 
-function questionMarksToString(num) {
-  var array = [];
-
-  for (var i = 0; i < num; i++) {
-    array.push('?');
-  }
-
-  return array.toString();
-}
-
 var orm = {
   selectAll: function(table, cb) {
     var queryString = 'SELECT * FROM ' + table + ';';
@@ -18,20 +8,24 @@ var orm = {
       cb(result);
     });
   },
-  insertOne: function(table, columns, values, cb) {
-    var queryString =
-      'INSERT INTO ' +
-      table +
-      ' ( (' +
-      columns.toString() +
-      ') ' +
-      'VALUES (' +
-      printQuestionMarks(values.length) +
-      ') ';
+  insertOne: function(table, tableData, cb) {
+    var queryString = 'INSERT INTO ' + table + ' SET ?';
 
     console.log(queryString);
 
-    connection.query(queryString, values, function(err, result) {
+    connection.query(queryString, tableData, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+  eatBurger: function(table, condition, cb) {
+    var queryString =
+      'UPDATE ' + table + ' SET devoured = true  WHERE ' + condition;
+
+    console.log(queryString);
+    connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
@@ -39,16 +33,8 @@ var orm = {
       cb(result);
     });
   },
-  updateOne: function(table, dataObject, condition, cb) {
-    var queryString =
-      'UPDATE ' +
-      table +
-      ' SET ' +
-      objToSql(dataObject) +
-      ' WHERE ' +
-      condition;
-
-    console.log(queryString);
+  delete: function(table, condition, cb) {
+    var queryString = 'DELETE FROM ' + table + ' WHERE ' + condition;
 
     connection.query(queryString, function(err, result) {
       if (err) {

@@ -19,8 +19,6 @@ p {
 }
 
 .form-control {
-  width: 300px;
-  height: 150px;
   margin: 0 auto;
   display: block;
 }
@@ -30,11 +28,6 @@ p {
   display: block;
 }
 
-.uneaten-burgers {
-  height: 150px;
-  width: 300px;
-  margin-left: 50px;
-  background: white;
-  border: 1px solid;
-  visibility: hidden;
+.eaten-burger-item {
+  color: rgba(0, 0, 0, 0.5);
 }
