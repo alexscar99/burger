@@ -6,22 +6,16 @@ var burger = {
       cb(res);
     });
   },
-  create: function(newBurger, cb) {
-    orm.insertOne('burgers', newBurger, function(res) {
+  create: function(columns, values, cb) {
+    orm.insertOne('burgers', columns, values, function(res) {
       cb(res);
     });
   },
-  update: function(condition, cb) {
-    orm.eatBurger('burgers', condition, function(res) {
+  update: function(object, condition, cb) {
+    orm.eatBurger('burgers', object, condition, function(res) {
       cb(res);
     });
   }
-
-  // update: function(dataObject, condition, cb) {
-  //   orm.updateOne('burgers', dataObject, condition, function(res) {
-  //     cb(res);
-  //   });
-  // }
 };
 
 module.exports = burger;
