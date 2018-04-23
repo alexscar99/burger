@@ -29,3 +29,12 @@ p {
   margin: 25px auto;
   display: block;
 }
+
+.uneaten-burgers {
+  height: 150px;
+  width: 300px;
+  margin-left: 50px;
+  background: white;
+  border: 1px solid;
+  visibility: hidden;
+}

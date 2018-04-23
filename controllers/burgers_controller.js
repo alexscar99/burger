@@ -7,7 +7,6 @@ router.get('/', function(req, res) {
     var handlebarsObject = {
       burgers: data
     };
-    console.log(handlebarsObject);
     res.render('index', handlebarsObject);
   });
 });
@@ -17,6 +16,7 @@ router.post('/api/burgers', function(req, res) {
     ['burger_name', 'devoured'],
     [req.body.burger_name, req.body.devoured],
     function(result) {
+      console.log(result);
       res.json({ id: result.insertValue });
     }
   );
