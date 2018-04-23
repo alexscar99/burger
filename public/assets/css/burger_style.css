@@ -1,0 +1,31 @@
+body {
+  background: rgb(202, 177, 62);
+}
+
+h1 img {
+  margin: 0 auto;
+  display: block;
+}
+
+h2 {
+  text-align: center;
+  margin: 45px auto;
+  color: #bc1212;
+}
+
+p {
+  text-align: center;
+  color: #bc1212;
+}
+
+.form-control {
+  width: 300px;
+  height: 150px;
+  margin: 0 auto;
+  display: block;
+}
+
+.btn-primary {
+  margin: 25px auto;
+  display: block;
+}
