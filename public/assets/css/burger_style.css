@@ -1,5 +1,5 @@
 body {
-  background: rgb(202, 177, 62);
+  background: rgb(209, 206, 193);
 }
 
 h1 img {
@@ -10,6 +10,11 @@ h1 img {
 h2 {
   text-align: center;
   margin: 45px auto;
+  color: #dd2020;
+}
+
+.panel-heading h3 {
+  text-align: center;
   color: #bc1212;
 }
 
@@ -21,6 +26,14 @@ h2 {
 .btn-primary {
   margin: 25px auto;
   display: block;
+  background: #bc1212;
+  border-color: #bc1212;
+}
+
+.btn-primary:hover {
+  opacity: 0.75;
+  background: #bc1212;
+  border-color: #bc1212;
 }
 
 .eaten-burger-item {
@@ -28,10 +41,29 @@ h2 {
 }
 
 .eat-burger {
-  margin: 30px 0;
+  margin: 25px 0;
 }
 
 .burgers-to-eat {
   width: 30%;
   padding-left: 20px;
+}
+
+.burgers-list {
+  padding-left: 75px;
+}
+
+.burger-overlay {
+  background-color: rgba(209, 206, 193, 0.5);
+  height: 225px;
+  width: 250px;
+  margin: 0 auto;
+}
+
+.burger-img {
+  background: url('../img/burger.jpeg');
+  background-size: cover;
+  margin: 0 auto;
+  height: 225px;
+  width: 250px;
 }

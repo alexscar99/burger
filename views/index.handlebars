@@ -1,6 +1,11 @@
 <h1>
-  <img src="/assets/img/burger.jpeg" alt="Burger Image">
+  <div class="burger-img">
+    <div class="burger-overlay">
+
+    </div>
+  </div>
 </h1>
+
 
 <h2>Eat-Da-Burger!</h2>
 
@@ -11,7 +16,7 @@
         <div class="panel-heading">
           <h3 class="panel-title">Burgers To Eat</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body burgers-list">
           <ol>
             {{#each burgers}} {{#unless devoured}}
             <li class="burger-item">
